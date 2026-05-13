@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SplashComponent } from './splash/splash.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -16,7 +15,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgxSpinnerModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
