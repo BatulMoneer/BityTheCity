@@ -16,7 +16,7 @@ export class AppComponent  implements OnInit {
   showSplash = false;
 
   ngOnInit(): void {
-    this.music.play();
+
     this.checkDevice();
     const hasVisited = localStorage.getItem('hasVisited');
       if (!hasVisited) {
@@ -32,7 +32,19 @@ export class AppComponent  implements OnInit {
   onResize() {
     this.checkDevice();
   }
+private musicStarted = false;
 
+@HostListener('window:click')
+@HostListener('window:keydown')
+startMusic() {
+
+  if (!this.musicStarted) {
+
+    this.music.play();
+    this.musicStarted = true;
+
+  }
+}
   checkDevice() {
     const userAgent = navigator.userAgent.toLowerCase();
     this.isMobile =
