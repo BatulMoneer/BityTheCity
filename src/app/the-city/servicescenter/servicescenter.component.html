@@ -1,0 +1,99 @@
+<div class="room">
+
+
+  <img
+    class="background"
+    src="/assets/Services Center.webp"
+    alt=""
+    draggable="false"
+  >
+  <div
+    class="player"
+    [style.left.px]="playerX"
+    [style.top.px]="playerY"
+  >
+    <app-bayan [frame]="currentFrame"></app-bayan>
+  </div>
+
+  <div
+  *ngIf="showInteractButton && activeTrigger && !showDialogue"
+  class="interact-button"
+  [style.left.px]="activeTrigger.x + activeTrigger.width / 2"
+  [style.top.px]="activeTrigger.y - 60"
+>
+  E
+</div>
+
+<div
+  *ngIf="showDialogue"
+  class="dialogue-overlay"
+>
+
+  <div class="dialogue-box">
+
+  <img
+    class="dialogue-image"
+    src="assets/window.webp"
+    alt=""
+  >
+  <button
+    class="hidden-close-btn"
+    (click)="closeDialogue()"
+  ></button>
+
+  <div class="dialogue-title">
+    {{ activeTrigger?.title }}
+  </div>
+
+  <div class="conversation-layout">
+
+    <img
+      class="speaker-image"
+      [src]="activeTrigger?.conversation?.[dialogueIndex]?.characterImage"
+      alt=""
+    >
+
+    <div class="speech-area">
+
+      <div class="speaker-name">
+        {{ activeTrigger?.conversation?.[dialogueIndex]?.speaker }}
+      </div>
+
+      <div class="dialogue-text">
+        {{ displayedText }}
+      </div>
+
+    </div>
+
+  </div>
+
+  <button
+    *ngIf="dialogueIndex < (activeTrigger?.conversation?.length || 0) - 1"
+    class="next-btn"
+    (click)="nextDialogue()"
+  >
+    NEXT
+  </button>
+
+  <button
+    *ngIf="dialogueIndex === (activeTrigger?.conversation?.length || 0) - 1"
+    class="next-btn"
+    (click)="closeDialogue()"
+  >
+    OK
+  </button>
+
+
+  </div>
+
+</div>
+
+
+<button
+  class="back-city-btn"
+  routerLink="/home"
+>
+  CITY
+</button>
+
+</div>

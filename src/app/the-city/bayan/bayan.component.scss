@@ -1,0 +1,8 @@
+.character {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  image-rendering: pixelated;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}

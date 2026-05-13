@@ -1,0 +1,84 @@
+<div class="room">
+
+  <img
+    class="background"
+    src="/assets/home.webp"
+    alt=""
+    draggable="false"
+  >
+  <div
+    class="player"
+    [style.left.px]="playerX"
+    [style.top.px]="playerY"
+  >
+    <app-bayan [frame]="currentFrame"></app-bayan>
+  </div>
+
+<div
+  *ngIf="showInteractButton && !showDialogue"
+  class="interact-button"
+  [style.left.px]="triggerZone.x + 30"
+  [style.top.px]="triggerZone.y - 60"
+>
+  E
+</div>
+
+<div
+  *ngIf="showDialogue"
+  class="dialogue-overlay"
+>
+
+  <div class="dialogue-box">
+
+
+    <img
+      class="dialogue-image"
+      src="/assets/window.webp"
+      alt=""
+    >
+
+      <button
+    class="hidden-close-btn"
+    (click)="closeDialogue()"
+  ></button>
+
+    <div class="dialogue-title">
+      {{ dialogueTitle }}
+    </div>
+
+
+    <div class="dialogue-text">
+      {{ displayedText }}
+    </div>
+
+
+    <button
+      *ngIf="dialogueIndex < dialoguePages.length - 1"
+      class="next-btn"
+      (click)="nextDialogue()"
+    >
+      NEXT
+    </button>
+
+
+    <button
+      *ngIf="dialogueIndex === dialoguePages.length - 1"
+      class="next-btn"
+      (click)="closeDialogue()"
+    >
+      OK
+    </button>
+
+  </div>
+
+</div>
+
+
+<button
+  class="back-city-btn"
+  routerLink="/home"
+>
+  CITY
+</button>
+
+</div>

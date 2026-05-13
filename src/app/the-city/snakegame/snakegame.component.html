@@ -1,0 +1,135 @@
+
+<div class="snake-wrapper">
+
+  <div
+    *ngIf="!gameStarted"
+    class="menu-screen"
+  >
+    <div class="menu-content">
+      <div class="snake-logo">
+        <div class="logo-row">
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-head"></div>
+        </div>
+
+        <div class="logo-column">
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-piece"></div>
+          <div class="snake-tail"></div>
+        </div>
+      </div>
+      <h1>SNAKE</h1>
+
+      <button
+        class="start-btn"
+        (click)="startGame()"
+      >
+        START
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- GAME -->
+
+  <div
+    *ngIf="gameStarted"
+    class="game-screen"
+  >
+
+    <img
+      class="game-background"
+      src="assets/snakebg.webp"
+      alt=""
+    >
+
+    <div class="score-text">
+      SCORE: {{ score }}
+    </div>
+
+    <div
+      #gameBoard
+      class="game-board"
+    >
+
+      <!-- FOOD -->
+
+      <div
+        class="food"
+        [style.left.px]="food.x * tileSize"
+        [style.top.px]="food.y * tileSize"
+      ></div>
+
+      <!-- SNAKE -->
+
+      <div
+        *ngFor="let part of snake; let i = index"
+        class="snake-part"
+        [class.snake-head-part]="i === 0"
+        [class.snake-tail-part]="i === snake.length - 1"
+        [style.left.px]="part.x * tileSize"
+        [style.top.px]="part.y * tileSize"
+        [style.transform]="
+          i === 0
+            ? getHeadRotation()
+            : i === snake.length - 1
+            ? getTailRotation(i)
+            : 'none'
+        "
+      >
+
+        <div *ngIf="i === 0" class="head-eyes">
+
+          <div class="eye"></div>
+          <div class="eye"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- GAME OVER -->
+
+    <div
+      *ngIf="gameOver"
+      class="game-over-overlay"
+    >
+
+      <div class="game-over-box">
+
+        <h2>GAME OVER</h2>
+
+        <p>SCORE: {{ score }}</p>
+
+        <button
+          class="restart-btn"
+          (click)="startGame()"
+        >
+          RESTART
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+  <button
+  class="back-city-btn"
+  routerLink="/home"
+>
+  CITY
+</button>
+
+</div>
+

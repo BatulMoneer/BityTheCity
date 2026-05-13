@@ -1,0 +1,50 @@
+.ss{
+  overflow: hidden;
+  padding: 0px;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.mobile-block {
+  position: fixed;
+  inset: 0;
+
+  background: #2e1d1a;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+
+  font-family: 'Press Start 2P', cursive;
+
+  text-align: center;
+
+  padding: 30px;
+}
+
+.mobile-box {
+  color: white;
+}
+
+.mobile-box h1 {
+  font-size: 30px;
+
+  margin-bottom: 30px;
+  line-height: 1.8;
+
+
+  letter-spacing: 4px;
+}
+
+.mobile-box p {
+  font-size: 12px;
+
+  line-height: 1.8;
+}

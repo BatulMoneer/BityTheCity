@@ -1,0 +1,113 @@
+<div class="room">
+  <img
+    class="background"
+    src="/assets/Projects Center.webp"
+    alt=""
+    draggable="false"
+  >
+  <div
+    class="player"
+    [style.left.px]="playerX"
+    [style.top.px]="playerY"
+  >
+    <app-bayan [frame]="currentFrame"></app-bayan>
+  </div>
+
+  <div
+  *ngIf="showInteractButton && activeTrigger && !showDialogue"
+  class="interact-button"
+  [style.left.px]="activeTrigger.x + activeTrigger.width / 2"
+  [style.top.px]="activeTrigger.y - 60"
+>
+  E
+</div>
+
+<div
+  *ngIf="showDialogue"
+  class="dialogue-overlay"
+>
+
+  <div class="dialogue-box">
+
+    <img
+      class="dialogue-image"
+      src="assets/window.webp"
+      alt=""
+    >
+
+  <button
+    class="hidden-close-btn"
+    (click)="closeDialogue()"
+  ></button>
+
+    <div class="dialogue-title">
+      {{ activeTrigger?.title }}
+    </div>
+
+
+    <ng-container *ngIf="dialogueIndex === 0">
+
+      <img
+        class="cover-image"
+        [src]="activeTrigger?.coverImage"
+      >
+
+      <div class="dialogue-text cover-text">
+        {{ displayedText }}
+      </div>
+
+    </ng-container>
+
+
+    <ng-container *ngIf="dialogueIndex > 0">
+
+      <div class="gallery-images">
+
+        <img
+          *ngIf="activeTrigger?.pages?.[dialogueIndex]?.leftImage"
+          [src]="activeTrigger!.pages[dialogueIndex].leftImage"
+        >
+
+        <img
+          *ngIf="activeTrigger?.pages?.[dialogueIndex]?.rightImage"
+          [src]="activeTrigger!.pages[dialogueIndex].rightImage"
+        >
+
+      </div>
+
+      <div class="dialogue-text gallery-text">
+        {{ displayedText }}
+      </div>
+
+    </ng-container>
+
+
+    <button
+      *ngIf="dialogueIndex < (activeTrigger?.pages?.length || 0) - 1"
+      class="next-btn"
+      (click)="nextDialogue()"
+    >
+      NEXT
+    </button>
+
+    <button
+      *ngIf="dialogueIndex === (activeTrigger?.pages?.length || 0) - 1"
+      class="next-btn"
+      (click)="closeDialogue()"
+    >
+      OK
+    </button>
+
+  </div>
+
+</div>
+
+
+<button
+  class="back-city-btn"
+  routerLink="/home"
+>
+  CITY
+</button>
+
+</div>

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  pointer-events: auto;
+}
+.logo {
+  height: 25px ;
+}
+.header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: #010100b0;
+  backdrop-filter: blur(4px);
+  font-family: 'Pixelify Sans', cursive;
+  color: white;
+}
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+.nav-links button {
+  font-family: 'Pixelify Sans', cursive;
+  font-size: 20px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+  image-rendering: pixelated;
+  transition: transform 0.1s;
+}
+.nav-links button:hover {
+  transform: translateY(-3px);
+  color: #d9b100 ;
+}

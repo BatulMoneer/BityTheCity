@@ -1,0 +1,74 @@
+<div class="viewport">
+
+  <app-city [x]="worldX" [y]="worldY"></app-city>
+
+  <div
+    class="player"
+    [style.left.px]="playerScreenX"
+    [style.top.px]="playerScreenY"
+  >
+    <app-bayan [frame]="currentFrame"></app-bayan>
+  </div>
+
+  <div
+    *ngFor="let obj of objects"
+    class="world-object"
+    [style.left.px]="obj.x + worldX"
+    [style.top.px]="obj.y + worldY"
+    [style.width.px]="obj.width"
+    [style.height.px]="obj.height"
+  >
+    <img
+      [src]="obj.image"
+      draggable="false"
+    />
+  </div>
+
+
+<div
+  *ngIf="activeBubble && activeZone"
+  class="speech-wrapper"
+  [style.left.px]="activeZone.x + worldX + (activeZone.uiOffsetX || 0)"
+  [style.top.px]="activeZone.y + worldY + (activeZone.uiOffsetY || 0)"
+>
+
+  <div
+    *ngIf="activeZone.title"
+    class="speech-title-bubble"
+  >
+    {{ activeZone.title }}
+  </div>
+
+  <div class="speech-bubble">
+
+    <div class="speech-text">
+      {{ activeBubble }}
+    </div>
+
+  </div>
+
+</div>
+
+<!-- BUTTON -->
+
+<div
+  *ngIf="activeButton && activeZone"
+  class="button-wrapper"
+  [style.left.px]="activeZone.x + worldX + (activeZone.uiOffsetX || 0)"
+  [style.top.px]="activeZone.y + worldY + (activeZone.uiOffsetY || 0)"
+>
+
+  <div
+    *ngIf="activeZone.title"
+    class="speech-title"
+  >
+    {{ activeZone.title }}
+  </div>
+
+  <button class="pixel-button">
+    {{ activeButton }}
+  </button>
+
+</div>
+
+</div>
