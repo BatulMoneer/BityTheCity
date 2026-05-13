@@ -14,9 +14,10 @@ export class BayanshouseComponent implements OnInit {
   showDialogue = false;
   dialogueIndex = 0;
   dialoguePages = [
-    'Welcome home Bayan.',
-    'This house was built many years ago.',
-    'Your adventure starts here.'
+    'HI, I am Bayan, a passionate graphic designer currently studying at Umm Al Qura University. I find inspiration in every form of art, whether it’s design, music. ',
+    'My journey is fueled by curiosity and the desire to learn new things.',
+    'I enjoy blending creativity with functionality, turning ideas into meaningful visuals that connect with people.',
+    'Beyond design, I have a deep appreciation for music, storytelling, and everything that sparks with originality.'
   ];
 
   displayedText = '';

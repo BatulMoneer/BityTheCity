@@ -86,7 +86,7 @@ export class ContactcenterComponent implements OnInit {
       width: 400,
       height: 350,
 
-      title: 'Contact Information',
+      title: 'Contact Me',
 
       conversation: [
 

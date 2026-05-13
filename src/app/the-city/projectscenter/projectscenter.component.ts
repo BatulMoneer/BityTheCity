@@ -98,7 +98,7 @@ export class ProjectscenterComponent implements OnInit {
           width: 170,
           height: 230,
 
-          title: 'Game Project',
+          title: 'Project One',
 
           coverImage: 'assets/projects/game-cover.webp',
 
@@ -126,7 +126,7 @@ export class ProjectscenterComponent implements OnInit {
           width: 170,
           height: 230,
 
-          title: 'Game Project',
+          title: 'Project Two',
 
           coverImage: 'assets/projects/game-cover.webp',
 
@@ -193,7 +193,7 @@ export class ProjectscenterComponent implements OnInit {
           width: 170,
           height: 230,
 
-          title: 'Game Project',
+          title: 'Project Three',
 
           coverImage: 'assets/projects/game-cover.webp',
 
@@ -261,7 +261,7 @@ export class ProjectscenterComponent implements OnInit {
           width: 170,
           height: 230,
 
-          title: 'Game Project',
+          title: 'Project Four',
 
           coverImage: 'assets/projects/game-cover.webp',
 
@@ -283,7 +283,7 @@ export class ProjectscenterComponent implements OnInit {
           width: 170,
           height: 230,
 
-          title: 'Game Project',
+          title: 'Project Five',
 
           coverImage: 'assets/projects/game-cover.webp',
 
@@ -320,7 +320,7 @@ export class ProjectscenterComponent implements OnInit {
           width: 170,
           height: 230,
 
-          title: 'Game Project',
+          title: 'Project Six',
 
           coverImage: 'assets/projects/game-cover.webp',
 
