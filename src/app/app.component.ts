@@ -14,6 +14,7 @@ export class AppComponent  implements OnInit {
   constructor(private music: MusicService) {}
   isMobile = false;
   showSplash = false;
+
   ngOnInit(): void {
     this.music.play();
     this.checkDevice();

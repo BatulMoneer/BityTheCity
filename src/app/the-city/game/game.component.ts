@@ -26,6 +26,58 @@ interface TriggerZone {
 })
 export class GameComponent implements OnInit {
 
+isLoaded = false;
+loadingProgress = 0;
+private imagesToPreload: string[] = [];
+
+private preloadAllImages(): Promise<void> {
+  const imageSet = new Set<string>();
+
+  Object.values(this.frames).forEach(frameList => {
+    frameList.forEach(src => imageSet.add(src));
+  });
+
+  this.objects.forEach(obj => {
+    if (obj.image) imageSet.add(obj.image);
+  });
+
+
+  this.imagesToPreload = Array.from(imageSet);
+
+  if (this.imagesToPreload.length === 0) return Promise.resolve();
+
+  let loadedCount = 0;
+  const total = this.imagesToPreload.length;
+
+  const loadImage = (src: string): Promise<void> => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        loadedCount++;
+        this.loadingProgress = Math.round((loadedCount / total) * 100);
+        resolve();
+      };
+      img.onerror = () => {
+        console.warn(`Failed to preload: ${src}`);
+        loadedCount++;
+        this.loadingProgress = Math.round((loadedCount / total) * 100);
+        resolve();
+      };
+      img.src = src;
+    });
+  };
+
+  const loadAll = async () => {
+    const concurrency = 8;
+    for (let i = 0; i < this.imagesToPreload.length; i += concurrency) {
+      const batch = this.imagesToPreload.slice(i, i + concurrency);
+      await Promise.all(batch.map(loadImage));
+    }
+  };
+
+  return loadAll();
+}
+
 
    SCALE = 0.5;
 
@@ -368,10 +420,20 @@ export class GameComponent implements OnInit {
   private lastFrameTime = 0;
   private frameDuration = 150;
 
-  ngOnInit() {
-    this.gameLoop(0);
+  async ngOnInit() {
+  this.speed = 0;
+
+  try {
+    await this.preloadAllImages();
+    console.log('✅ All assets preloaded');
+  } catch (e) {
+    console.error('Preload failed', e);
   }
 
+  this.isLoaded = true;
+  this.speed = 5;
+  this.gameLoop(0);
+}
   gameLoop = (timestamp: number) => {
     this.updateMovement();
     this.updateAnimation(timestamp);

@@ -1,4 +1,5 @@
-<div class="ss">
+
+
   <div
     *ngIf="isMobile"
     class="mobile-block"
@@ -16,7 +17,6 @@
 
   </div>
 
-  <!-- WEBSITE -->
   <app-splash *ngIf="showSplash"></app-splash>
   <router-outlet *ngIf="!isMobile"></router-outlet>
-  </div>
+
